@@ -1,0 +1,9 @@
+platform :ios, '13.0'
+
+target 'DJNetworking' do
+  use_frameworks!
+  
+  pod 'AFNetworking', '~> 4.0.0'
+
+
+end
