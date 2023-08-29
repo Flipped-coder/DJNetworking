@@ -9,18 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^DJNetworkingHandler)(id resultObject, NSError *error);
-
-#pragma mark - Login_data 声明
-/// 登录信息
-typedef struct DJLoginInfo {
-    /// 设备信息
-    NSString *deviceInfo;
-    /// 客户端信息（操作系统版本）
-    NSString *clientInfo;
-    /// 登录IP
-    NSString *loginIp;
-} DJLoginInfo;
+typedef void (^DJNetworkingHandler)(id _Nullable resultObject , NSError  * _Nullable error );
 
 
 #pragma mark - Login_type 声明
@@ -42,24 +31,44 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
   DJUserLogin_unkown4   = 7,
 };
 
+#pragma mark - 客户端配置信息类
+/**
+ * 客户端配置信息类
+ */
+@interface DJClientInfo : NSObject
+/// 设备信息
+@property (nonatomic, strong) NSString *deviceInfo;
+/// 客户端信息（操作系统版本）
+@property (nonatomic, strong) NSString *OSInfo;
+/// 登录IP
+@property (nonatomic, strong) NSString *loginIp;
 
-#pragma mark - 服务器配置信息
-/// 服务器配置信息
-typedef struct DJServerInfo {
-    // 服务器 ip 地址
-    NSString *ip;
-    // 服务器端口号
-    NSString *port;
-    // 服务器路由
-    NSString *route;
-    // API
-    NSString *api;
-    // 请求头
-    NSDictionary *headers;
-    // 请求体
-    NSDictionary *parameters;
-    
-} DJServerInfo;
+@end
+
+
+
+#pragma mark - 请求信息类
+/**
+ * 服务器配置信息类
+ */
+@interface DJRequestInfo : NSObject
+/// 协议头
+@property (nonatomic, strong) NSString *urlSchemes;
+/// 服务器ip
+@property (nonatomic, strong) NSString *server_ip;
+/// 服务器端口号
+@property (nonatomic, strong) NSString *server_port;
+/// 服务器路由
+@property (nonatomic, strong) NSString *server_route;
+/// URI
+@property (nonatomic, strong) NSString *URI;
+/// 请求头
+@property (nonatomic, strong) NSDictionary *headers;
+/// 请求体
+@property (nonatomic, strong) NSDictionary *parameters;
+
+@end
+
 
 
 #pragma mark - DJUser_Class 用户管理类(登录、登出、注册)
@@ -76,13 +85,12 @@ typedef struct DJServerInfo {
  *
  * @param phoneNumber               手机号码
  * @param verificationCode    验证码
- * @param loginInfo                    登录设备信息
+ * @param requestInfo               请求信息
  * @param handler                        结果回调，返回当前登录用户的 Token
  */
 + (void)phoneVerifyCodeLoginWithPhoneNumber:(NSString *)phoneNumber
                            verificationCode:(NSString *)verificationCode
-                                  loginInfo:(DJLoginInfo *)loginInfo
-                                 serverInfo:(DJServerInfo *)serverInfo
+                                requestInfo:(DJRequestInfo *)requestInfo
                           completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -91,13 +99,12 @@ typedef struct DJServerInfo {
  *
  * @param phoneNumber                手机号码
  * @param password                       账号密码
- * @param loginInfo                    登录设备信息
+ * @param requestInfo                请求信息
  * @param handler                        结果回调，返回当前登录用户的 Token
  */
 + (void)phonePasswordLoginWithPhoneNumber:(NSString *)phoneNumber
                                  password:(NSString *)password
-                                loginInfo:(DJLoginInfo *)loginInfo
-                               serverInfo:(DJServerInfo *)serverInfo
+                              requestInfo:(DJRequestInfo *)requestInfo
                         completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -106,13 +113,12 @@ typedef struct DJServerInfo {
  *
  * @param email                            用户邮箱
  * @param verificationCode    验证码
- * @param loginInfo                    登录设备信息
+ * @param requestInfo               请求信息
  * @param handler                        结果回调，返回当前登录用户的 Token
  */
 + (void)emailVerifyCodeLoginWithEmail:(NSString *)email
                      verificationCode:(NSString *)verificationCode
-                            loginInfo:(DJLoginInfo *)loginInfo
-                           serverInfo:(DJServerInfo *)serverInfo
+                          requestInfo:(DJRequestInfo *)requestInfo
                     completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -121,13 +127,12 @@ typedef struct DJServerInfo {
  *
  * @param email                            用户邮箱
  * @param password                     密码
- * @param loginInfo                   登录设备信息
+ * @param requestInfo              请求信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  */
 + (void)emailPasswordLoginWithEmail:(NSString *)email
                            password:(NSString *)password
-                          loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(DJServerInfo *)serverInfo
+                        requestInfo:(DJRequestInfo *)requestInfo
                   completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -136,13 +141,12 @@ typedef struct DJServerInfo {
  *
  * @param ttkID                            ttk_ID
  * @param password                     密码
- * @param loginInfo                   登录设备信息
+ * @param requestInfo              请求信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  */
 + (void)ttkIDPasswordLoginWithTTKID:(NSString *)ttkID
                            password:(NSString *)password
-                          loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(DJServerInfo *)serverInfo
+                        requestInfo:(DJRequestInfo *)requestInfo
                   completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -151,15 +155,14 @@ typedef struct DJServerInfo {
  *
  * @param token                            第三方平台token
  * @param loginType                   登录平台类型
- * @param loginInfo                   登录设备信息
+ * @param requestInfo              请求信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  *
  * @discussion 由于网络原因，该方法在服务器上不一定成功，如果失败，则将自动调用下一个备用接口，以此获取ttk_token
  */
 + (void)thirdPartyLoginWithToken:(NSString *)token
                        loginType:(DJLoginPathway *)loginType
-                       loginInfo:(DJLoginInfo *)loginInfo
-                      serverInfo:(DJServerInfo *)serverInfo
+                     requestInfo:(DJRequestInfo *)requestInfo
                completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -168,15 +171,14 @@ typedef struct DJServerInfo {
  *
  * @param token                            第三方平台token
  * @param loginType                   登录平台类型
- * @param loginInfo                   登录设备信息
+ * @param requestInfo                   登录设备信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  *
  * @discussion 该方法在本地请求第三方平台的用户数据，然后发往服务器，得到该用户的ttk_token
  */
 + (void)standbyThirdPartyLoginWithToken:(NSString *)token
                               loginType:(DJLoginPathway *)loginType
-                              loginInfo:(DJLoginInfo *)loginInfo
-                             serverInfo:(DJServerInfo *)serverInfo
+                            requestInfo:(DJRequestInfo *)requestInfo
                       completionHandler:(DJNetworkingHandler)handler;
 
 
