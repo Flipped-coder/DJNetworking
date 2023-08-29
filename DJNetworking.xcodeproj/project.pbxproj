@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35A12B132A9CEB3000BD765A /* DJNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B122A9CEB3000BD765A /* DJNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35A12B3A2A9D7C0000BD765A /* DJUserNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A12B352A9D7C0000BD765A /* DJUserNetworking.m */; };
 		35A12B3B2A9D7C0000BD765A /* DJNetworkConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B372A9D7C0000BD765A /* DJNetworkConfig.h */; };
 		35A12B3C2A9D7C0000BD765A /* DJUserNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B382A9D7C0000BD765A /* DJUserNetworking.h */; };
@@ -17,7 +16,6 @@
 
 /* Begin PBXFileReference section */
 		35A12B0F2A9CEB3000BD765A /* DJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A12B122A9CEB3000BD765A /* DJNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJNetworking.h; sourceTree = "<group>"; };
 		35A12B352A9D7C0000BD765A /* DJUserNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJUserNetworking.m; sourceTree = "<group>"; };
 		35A12B372A9D7C0000BD765A /* DJNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJNetworkConfig.h; sourceTree = "<group>"; };
 		35A12B382A9D7C0000BD765A /* DJUserNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJUserNetworking.h; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 		35A12B112A9CEB3000BD765A /* DJNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				35A12B122A9CEB3000BD765A /* DJNetworking.h */,
 				35A12B362A9D7C0000BD765A /* Classes */,
 				35A12B342A9D7C0000BD765A /* include */,
 			);
@@ -109,7 +106,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35A12B132A9CEB3000BD765A /* DJNetworking.h in Headers */,
 				35A12B3B2A9D7C0000BD765A /* DJNetworkConfig.h in Headers */,
 				35A12B3D2A9D7C0000BD765A /* DJNetworking.h in Headers */,
 				35A12B3C2A9D7C0000BD765A /* DJUserNetworking.h in Headers */,

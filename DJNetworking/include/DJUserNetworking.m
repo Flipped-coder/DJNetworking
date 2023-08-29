@@ -21,7 +21,7 @@
 + (void)phoneVerifyCodeLoginWithPhoneNumber:(NSString *)phoneNumber
                            verificationCode:(NSString *)verificationCode
                                   loginInfo:(DJLoginInfo *)loginInfo
-                                 serverInfo:(ServerInfo *)serverInfo
+                                 serverInfo:(DJServerInfo *)serverInfo
                           completionHandler:(DJNetworkingHandler)handler {
     
     
@@ -32,7 +32,7 @@
 + (void)phonePasswordLoginWithPhoneNumber:(NSString *)phoneNumber
                                  password:(NSString *)password
                                 loginInfo:(DJLoginInfo *)loginInfo
-                               serverInfo:(ServerInfo *)serverInfo
+                               serverInfo:(DJServerInfo *)serverInfo
                         completionHandler:(DJNetworkingHandler)handler {
     
     
@@ -43,7 +43,7 @@
 + (void)emailVerifyCodeLoginWithEmail:(NSString *)email
                      verificationCode:(NSString *)verificationCode
                             loginInfo:(DJLoginInfo *)loginInfo
-                           serverInfo:(ServerInfo *)serverInfo
+                           serverInfo:(DJServerInfo *)serverInfo
                     completionHandler:(DJNetworkingHandler)handler {
     
     
@@ -55,7 +55,7 @@
 + (void)emailPasswordLoginWithEmail:(NSString *)email
                            password:(NSString *)password
                           loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(ServerInfo *)serverInfo
+                         serverInfo:(DJServerInfo *)serverInfo
                   completionHandler:(DJNetworkingHandler)handler {
     
     
@@ -66,7 +66,7 @@
 + (void)ttkIDPasswordLoginWithTTKID:(NSString *)ttkID
                            password:(NSString *)password
                           loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(ServerInfo *)serverInfo
+                         serverInfo:(DJServerInfo *)serverInfo
                   completionHandler:(DJNetworkingHandler)handler {
     
     
@@ -78,15 +78,8 @@
 + (void)thirdPartyLoginWithToken:(NSString *)token
                        loginType:(DJLoginPathway *)loginType
                        loginInfo:(DJLoginInfo *)loginInfo
-                      serverInfo:(ServerInfo *)serverInfo
+                      serverInfo:(DJServerInfo *)serverInfo
                completionHandler:(DJNetworkingHandler)handler {
-    
-    NSString *loginAPI;
-    switch ((NSUInteger)loginType) {
-        case DJGoogleLoginType:         loginAPI = LOGIN_API_GOOGLE;            break;
-        case DJFacebookLoginType:       loginAPI = LOGIN_API_FACEBOOK;          break;
-        case DJGithubLoginType:         loginAPI = LOGIN_API_GITHUB;            break;
-    }
     
     // 创建 AFHTTPSessionManager 对象
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -94,27 +87,10 @@
     // 设置请求格式为 JSON
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
  
-    // 构建自定义请求头
-    NSDictionary *headers = @{
-        @"Authorization": token,
-    };
-    
-    NSDictionary *signInData = @{
-        @"deviceInfo"   : loginInfo->deviceInfo,
-        @"clientOsInfo" : loginInfo->clientInfo,
-        @"loginIp"      : loginInfo->loginIp
-    };
-    
-    // 构建自定义请求体
-    NSDictionary *parameters = @{
-        @"token"        : token,
-        @"login_common" : signInData
-    };
-    
     // 发起 GET 请求
-    [manager GET:loginAPI
-      parameters:parameters
-         headers:headers
+    [manager GET:serverInfo->api
+      parameters:serverInfo->parameters
+         headers:serverInfo->parameters
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              // 请求成功处理
@@ -124,8 +100,6 @@
              // 请求失败处理
              NSLog(@"Error: %@", error);
          }];
-    
-    
 }
 
 
@@ -133,15 +107,9 @@
 + (void)standbyThirdPartyLoginWithToken:(NSString *)token
                               loginType:(DJLoginPathway *)loginType
                               loginInfo:(DJLoginInfo *)loginInfo
-                             serverInfo:(ServerInfo *)serverInfo
+                             serverInfo:(DJServerInfo *)serverInfo
                       completionHandler:(DJNetworkingHandler)handler {
     
-    NSString *loginAPI;
-    switch ((NSUInteger)loginType) {
-        case DJGoogleLoginType:         loginAPI = LOGIN_API_GOOGLE;            break;
-        case DJFacebookLoginType:       loginAPI = LOGIN_API_FACEBOOK;          break;
-        case DJGithubLoginType:         loginAPI = LOGIN_API_GITHUB;            break;
-    }
     
     
 }

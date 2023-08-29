@@ -45,14 +45,21 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 
 #pragma mark - 服务器配置信息
 /// 服务器配置信息
-typedef struct ServerInfo {
+typedef struct DJServerInfo {
     // 服务器 ip 地址
     NSString *ip;
     // 服务器端口号
     NSString *port;
     // 服务器路由
     NSString *route;
-} ServerInfo;
+    // API
+    NSString *api;
+    // 请求头
+    NSDictionary *headers;
+    // 请求体
+    NSDictionary *parameters;
+    
+} DJServerInfo;
 
 
 #pragma mark - DJUser_Class 用户管理类(登录、登出、注册)
@@ -75,7 +82,7 @@ typedef struct ServerInfo {
 + (void)phoneVerifyCodeLoginWithPhoneNumber:(NSString *)phoneNumber
                            verificationCode:(NSString *)verificationCode
                                   loginInfo:(DJLoginInfo *)loginInfo
-                                 serverInfo:(ServerInfo *)serverInfo
+                                 serverInfo:(DJServerInfo *)serverInfo
                           completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -90,7 +97,7 @@ typedef struct ServerInfo {
 + (void)phonePasswordLoginWithPhoneNumber:(NSString *)phoneNumber
                                  password:(NSString *)password
                                 loginInfo:(DJLoginInfo *)loginInfo
-                               serverInfo:(ServerInfo *)serverInfo
+                               serverInfo:(DJServerInfo *)serverInfo
                         completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -105,7 +112,7 @@ typedef struct ServerInfo {
 + (void)emailVerifyCodeLoginWithEmail:(NSString *)email
                      verificationCode:(NSString *)verificationCode
                             loginInfo:(DJLoginInfo *)loginInfo
-                           serverInfo:(ServerInfo *)serverInfo
+                           serverInfo:(DJServerInfo *)serverInfo
                     completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -120,7 +127,7 @@ typedef struct ServerInfo {
 + (void)emailPasswordLoginWithEmail:(NSString *)email
                            password:(NSString *)password
                           loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(ServerInfo *)serverInfo
+                         serverInfo:(DJServerInfo *)serverInfo
                   completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -135,7 +142,7 @@ typedef struct ServerInfo {
 + (void)ttkIDPasswordLoginWithTTKID:(NSString *)ttkID
                            password:(NSString *)password
                           loginInfo:(DJLoginInfo *)loginInfo
-                         serverInfo:(ServerInfo *)serverInfo
+                         serverInfo:(DJServerInfo *)serverInfo
                   completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -152,7 +159,7 @@ typedef struct ServerInfo {
 + (void)thirdPartyLoginWithToken:(NSString *)token
                        loginType:(DJLoginPathway *)loginType
                        loginInfo:(DJLoginInfo *)loginInfo
-                      serverInfo:(ServerInfo *)serverInfo
+                      serverInfo:(DJServerInfo *)serverInfo
                completionHandler:(DJNetworkingHandler)handler;
 
 
@@ -169,7 +176,7 @@ typedef struct ServerInfo {
 + (void)standbyThirdPartyLoginWithToken:(NSString *)token
                               loginType:(DJLoginPathway *)loginType
                               loginInfo:(DJLoginInfo *)loginInfo
-                             serverInfo:(ServerInfo *)serverInfo
+                             serverInfo:(DJServerInfo *)serverInfo
                       completionHandler:(DJNetworkingHandler)handler;
 
 
