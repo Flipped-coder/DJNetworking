@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		35A12B132A9CEB3000BD765A /* DJNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B122A9CEB3000BD765A /* DJNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35A12B3A2A9D7C0000BD765A /* DJUserNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A12B352A9D7C0000BD765A /* DJUserNetworking.m */; };
+		35A12B3B2A9D7C0000BD765A /* DJNetworkConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B372A9D7C0000BD765A /* DJNetworkConfig.h */; };
+		35A12B3C2A9D7C0000BD765A /* DJUserNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B382A9D7C0000BD765A /* DJUserNetworking.h */; };
+		35A12B3D2A9D7C0000BD765A /* DJNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A12B392A9D7C0000BD765A /* DJNetworking.h */; };
+		51B354CBD3DA20BF6F4BB75B /* Pods_DJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED5BCAB327B4D0F49792D09 /* Pods_DJNetworking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35A12B0F2A9CEB3000BD765A /* DJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A12B122A9CEB3000BD765A /* DJNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJNetworking.h; sourceTree = "<group>"; };
+		35A12B352A9D7C0000BD765A /* DJUserNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJUserNetworking.m; sourceTree = "<group>"; };
+		35A12B372A9D7C0000BD765A /* DJNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJNetworkConfig.h; sourceTree = "<group>"; };
+		35A12B382A9D7C0000BD765A /* DJUserNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJUserNetworking.h; sourceTree = "<group>"; };
+		35A12B392A9D7C0000BD765A /* DJNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJNetworking.h; sourceTree = "<group>"; };
+		4ED5BCAB327B4D0F49792D09 /* Pods_DJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F1F13FD532C4EDC0AC9C16 /* Pods-DJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJNetworking.release.xcconfig"; path = "Target Support Files/Pods-DJNetworking/Pods-DJNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		C0FCB95EE6B66D306D2C6B97 /* Pods-DJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJNetworking.debug.xcconfig"; path = "Target Support Files/Pods-DJNetworking/Pods-DJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -20,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51B354CBD3DA20BF6F4BB75B /* Pods_DJNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,6 +44,8 @@
 			children = (
 				35A12B112A9CEB3000BD765A /* DJNetworking */,
 				35A12B102A9CEB3000BD765A /* Products */,
+				8612FE0DB9AAE296FB12CD87 /* Pods */,
+				CA6DB09FA87564F74E2A6164 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,8 +61,45 @@
 			isa = PBXGroup;
 			children = (
 				35A12B122A9CEB3000BD765A /* DJNetworking.h */,
+				35A12B362A9D7C0000BD765A /* Classes */,
+				35A12B342A9D7C0000BD765A /* include */,
 			);
 			path = DJNetworking;
+			sourceTree = "<group>";
+		};
+		35A12B342A9D7C0000BD765A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				35A12B352A9D7C0000BD765A /* DJUserNetworking.m */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		35A12B362A9D7C0000BD765A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				35A12B392A9D7C0000BD765A /* DJNetworking.h */,
+				35A12B372A9D7C0000BD765A /* DJNetworkConfig.h */,
+				35A12B382A9D7C0000BD765A /* DJUserNetworking.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8612FE0DB9AAE296FB12CD87 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0FCB95EE6B66D306D2C6B97 /* Pods-DJNetworking.debug.xcconfig */,
+				87F1F13FD532C4EDC0AC9C16 /* Pods-DJNetworking.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CA6DB09FA87564F74E2A6164 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ED5BCAB327B4D0F49792D09 /* Pods_DJNetworking.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -58,6 +110,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				35A12B132A9CEB3000BD765A /* DJNetworking.h in Headers */,
+				35A12B3B2A9D7C0000BD765A /* DJNetworkConfig.h in Headers */,
+				35A12B3D2A9D7C0000BD765A /* DJNetworking.h in Headers */,
+				35A12B3C2A9D7C0000BD765A /* DJUserNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +123,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35A12B162A9CEB3000BD765A /* Build configuration list for PBXNativeTarget "DJNetworking" */;
 			buildPhases = (
+				E20CB5697FB38151FF03B5D0 /* [CP] Check Pods Manifest.lock */,
 				35A12B0A2A9CEB3000BD765A /* Headers */,
 				35A12B0B2A9CEB3000BD765A /* Sources */,
 				35A12B0C2A9CEB3000BD765A /* Frameworks */,
@@ -124,11 +180,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E20CB5697FB38151FF03B5D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DJNetworking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35A12B0B2A9CEB3000BD765A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35A12B3A2A9D7C0000BD765A /* DJUserNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +335,7 @@
 		};
 		35A12B172A9CEB3000BD765A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0FCB95EE6B66D306D2C6B97 /* Pods-DJNetworking.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -283,6 +366,7 @@
 		};
 		35A12B182A9CEB3000BD765A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F1F13FD532C4EDC0AC9C16 /* Pods-DJNetworking.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

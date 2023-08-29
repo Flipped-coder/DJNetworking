@@ -1,0 +1,6 @@
+framework module Pods_DJNetworking {
+  umbrella header "Pods-DJNetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}
