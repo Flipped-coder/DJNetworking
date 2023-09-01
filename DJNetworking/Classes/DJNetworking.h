@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DJUserNetworking.h"
 
 //! Project version number for DJNetworking.
 FOUNDATION_EXPORT double DJNetworkingVersionNumber;

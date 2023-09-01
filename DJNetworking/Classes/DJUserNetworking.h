@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 @property (nonatomic) DJLoginPathway *loginPathWay;
 
 + (DJStandbyUserInfo *)initStandbyUserInfoWithToken:(NSString *)token
-                                       loginPathWay:(NSUInteger *)loginPathWay;
+                                       loginPathWay:(DJLoginPathway)loginPathWay;
 
 @end
 
@@ -218,15 +218,15 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 
 
 /**
- * @abstract Google 第三方登录
+ * @abstract 第三方登录
  *
  * @param requestInfo              请求信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  *
  * @discussion 由于网络原因，该方法在服务器上不一定成功，如果失败，则将自动调用下一个备用接口，以此获取ttk_token
  */
-+ (void)thirdPartyGoogleLoginWithRequestInfo:(DJRequestInfo *)requestInfo
-                           completionHandler:(DJNetworkingHandler)handler;
++ (void)thirdPartyLoginWithRequestInfo:(DJRequestInfo *)requestInfo
+                     completionHandler:(DJNetworkingHandler)handler;
 
 
 /**
