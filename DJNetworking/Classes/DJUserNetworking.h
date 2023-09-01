@@ -149,7 +149,7 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 /// 请求头
 @property (nonatomic, strong) NSDictionary * __nullable headers;
 /// 请求体参数
-@property (nonatomic, strong) DJLoginParameters *parameters;
+@property (nonatomic, strong) DJLoginParameters * __nullable parameters;
 
 + (DJRequestInfo *)initRequestInfoWithServerInfo:(DJServerInfo *)serverInfo
                                       parameters:(DJLoginParameters *)parameters;
@@ -230,9 +230,9 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 
 
 /**
- * @abstract Google 第三方登录（备用接口）
+ * @abstract 第三方登录（备用接口）
  *
- * @param requestInfo                   登录设备信息
+ * @param requestInfo              登录设备信息
  * @param handler                       结果回调，返回当前登录用户的 Token
  *
  * @discussion 该方法在本地请求第三方平台的用户数据，然后发往服务器，得到该用户的ttk_token
@@ -242,16 +242,24 @@ typedef NS_ENUM(NSUInteger, DJLoginPathway) {
 
 
 
-
-
-
 @end
 
 
 
+#pragma mark - DJUserData 用户信息类
+
+/**
+ * 用户信息类
+ * Get、Set、updata用户信息
+ */
+
+@interface DJUserData : NSObject
 
 
-@interface DJUserNetworking : NSObject
+
+
+
+
 
 @end
 

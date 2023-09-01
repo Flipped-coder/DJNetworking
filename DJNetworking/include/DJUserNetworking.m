@@ -213,6 +213,12 @@
     requestInfo.serverInfo = serverInfo;
     requestInfo.parameters = parameters;
     
+    if (parameters.token) {
+        requestInfo.headers = @{
+            @"Authorization":parameters.token
+        };
+    }
+    
     return requestInfo;
 }
 
@@ -280,7 +286,7 @@
         @"clientInfo"    : clientInfo
     };
     
-    [DJUserManageNetworking postNetworkingWithURL:requestInfo.serverInfo.URI parameters:parameter CompletionHandler:^(id  _Nullable resultObject, NSError * _Nullable error) {
+    [DJUserManageNetworking postNetworkingWithURL:requestInfo.serverInfo.URI headers:nil parameters:parameter CompletionHandler:^(id  _Nullable resultObject, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(),^{
             if(handler){
                 handler(resultObject, error);
@@ -313,8 +319,7 @@
         @"clientInfo"      : clientInfo
     };
     
-    [DJUserManageNetworking postNetworkingWithURL:requestInfo.serverInfo.URI parameters:parameter CompletionHandler:^(id  _Nullable resultObject, NSError * _Nullable error) {
-       
+    [DJUserManageNetworking postNetworkingWithURL:requestInfo.serverInfo.URI headers:nil parameters:parameter CompletionHandler:^(id  _Nullable resultObject, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(),^{
             if(handler){
                 handler(resultObject, error);
@@ -326,10 +331,57 @@
 
 
 
+
+
+
+
+
+
+
+
+// get网络请求
++ (void)getNetworkingWithURL:(NSString *)url
+                     headers:(NSDictionary *)headers
+                  parameters:(NSDictionary *)parameters
+           CompletionHandler:(DJNetworkingHandler)handler {
+    
+    // 创建 AFHTTPSessionManager 对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
+    // 设置请求格式为 JSON
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    // 发起 GET 请求
+    [manager GET:url
+      parameters:parameters
+         headers:headers
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             // 请求成功处理
+        dispatch_async(dispatch_get_main_queue(),^{
+            if(handler){
+                handler(responseObject, nil);
+            }
+        });
+
+
+         }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             // 请求失败处理
+        dispatch_async(dispatch_get_main_queue(),^{
+            if(handler){
+                handler(nil, error);
+            }
+        });
+    }];
+}
+
+
 // post网络请求
 + (void)postNetworkingWithURL:(NSString *)url
-                                       parameters:(NSDictionary *)parameters
-                                CompletionHandler:(DJNetworkingHandler)handler {
+                      headers:(NSDictionary *)headers
+                   parameters:(NSDictionary *)parameters
+            CompletionHandler:(DJNetworkingHandler)handler {
     
     // 创建 AFHTTPSessionManager 对象
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -340,7 +392,7 @@
     // 发起 GET 请求
     [manager POST:url
       parameters:parameters
-         headers:nil
+         headers:headers
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              // 请求成功处理
