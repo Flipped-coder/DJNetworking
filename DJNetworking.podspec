@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "DJNetworking"
-  spec.version      = "0.2.2"
+  spec.version      = "0.2.3"
   spec.summary      = "这是一个网络库"
 
   spec.homepage     = "https://github.com/Flipped-coder/DJNetworking"
